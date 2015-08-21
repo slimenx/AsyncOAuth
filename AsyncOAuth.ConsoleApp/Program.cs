@@ -15,23 +15,28 @@ namespace AsyncOAuth.ConsoleApp
         const string consumerKey = "";
         const string consumerSecret = "";
 
-        static async Task Run()
-        {
-            // initialize computehash function
-            OAuthUtility.ComputeHash = (key, buffer) => { using (var hmac = new HMACSHA1(key)) { return hmac.ComputeHash(buffer); } };
 
-            // sample, twitter access flow
-            var accessToken = await TwitterClient.AuthorizeSample(consumerKey, consumerSecret);
-
-            var client = new TwitterClient(consumerKey, consumerSecret, accessToken);
-
-            var tl = await client.GetTimeline(10, 1);
-            Console.WriteLine(tl);
-        }
 
         static void Main(string[] args)
         {
-            Run().Wait();
+            // initialize computehash function
+            OAuthUtility.ComputeHash = (key, buffer) =>
+            {
+                using (var hmac = new HMACSHA1(key))
+                {
+                    return hmac.ComputeHash(buffer);
+                }
+            };
+
+            var client = new TwitterClient(consumerKey, consumerSecret);
+
+            // sample, twitter access flow
+            client.AuthorizeSample();
+
+            var tl = client.GetTimeline(10, 1).Result;
+            Console.WriteLine(tl);
+
+            Console.ReadKey();
         }
     }
 }

@@ -63,6 +63,7 @@
     <Compile Include="Internal\Precondition.cs" />
     <Compile Include="Internal\Utility.cs" />
     <Compile Include="OAuthAuthorizer.cs" />
+    <Compile Include="OAuthClient.cs" />
     <Compile Include="OAuthMessageHandler.cs" />
     <Compile Include="OAuthUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
