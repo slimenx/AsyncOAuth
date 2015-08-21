@@ -34,10 +34,10 @@ Create OAuthClient
 var client = new OAuthClient("consumerKey", "consumerSecret");
 string pinRequestUrl = client.GetPinRequestUrl("requestTokenUrl", "authorizeUrl");
  
- //user goes to the link provided and get pin
- string pin;
+//user goes to the link provided and get pin
+string pin;
 
- client.GetAccessToken("accessTokenUrl", pin);
+client.GetAccessToken("accessTokenUrl", pin);
 ```
 
 License
